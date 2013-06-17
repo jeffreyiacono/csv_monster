@@ -109,8 +109,6 @@ describe ExtendedCSV do
     before  { FileUtils.rm outfile if File.exists? outfile }
     after   { FileUtils.rm outfile }
 
-    subject {  }
-
     it "writes the file to the specified location" do
       expect(File.exists? outfile).to be_false
       extended_csv.write! outfile
