@@ -50,6 +50,32 @@ class ExtendedCSV
     puts "wrote #{@filepaths.length} file#{'s' if @filepaths.length != 1} to #{outfile}"
   end
 
+  def split times_to_split
+    records_per_file = (self.content_length - 1) / times_to_split.to_i
+    original_content = self.content
+    headers = original_content.shift
+    split_content = []
+    split_content_index = 0
+    incrementor=0
+
+    self.content.each do |row|
+      incrementor += 1
+      if incrementor == 1
+        split_content[split_content_index] = ExtendedCSV.new#[]
+        split_content[split_content_index].content.push headers
+      end
+
+      split_content[split_content_index].content.push row
+
+      if incrementor  == records_per_file
+        split_content_index += 1
+        incrementor          = 0
+      end
+    end
+    puts split_content
+    return split_content
+  end
+
 private
 
   def default_outfile_name
