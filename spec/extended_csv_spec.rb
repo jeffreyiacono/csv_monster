@@ -1,4 +1,4 @@
-require './models/extended_csv'
+require './lib/extended_csv'
 
 def sample_csv_filepath
   File.expand_path(File.join("..", "support", "sample.csv"), __FILE__)
