@@ -56,7 +56,7 @@ class ExtendedCSV
 
     tail.each_with_index do |row, i|
       if (i % tail.length / split_count).zero? && split_count > splits.length
-        splits << ExtendedCSV.new
+        splits << self.class.new
         splits.last.content << header
       end
 
