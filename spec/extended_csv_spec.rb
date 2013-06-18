@@ -117,4 +117,25 @@ describe ExtendedCSV do
       expect(FileUtils.identical? infile, outfile).to be_true
     end
   end
+
+  describe "#split" do 
+    let(:extended_csv) { described_class.new sample_csv_filepath }
+
+    subject { extended_csv.split(2) }
+
+    it "splits the file into an array that is made up of 2 ExtendedCSV objects" do
+      expect(extended_csv.content).to eq [["header_1", "header_2"],
+                                          ["row_1_column_1_entry", "row_1_column_2_entry"],
+                                          ["row_2_column_1_entry", "row_2_column_2_entry"]]
+      result = subject
+      expect(result.length == 2).to be_true
+      expect(result[0]).to be_an_instance_of described_class
+      expect(result[1]).to be_an_instance_of described_class
+      expect(result[0].content).to eq [["header_1", "header_2"],
+                                       ["row_1_column_1_entry", "row_1_column_2_entry"]]
+      expect(result[1].content).to eq [["header_1", "header_2"],
+                                       ["row_2_column_1_entry", "row_2_column_2_entry"]]
+
+    end
+  end
 end
