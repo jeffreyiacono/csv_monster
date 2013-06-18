@@ -109,10 +109,11 @@ describe ExtendedCSV do
     before  { FileUtils.rm outfile if File.exists? outfile }
     after   { FileUtils.rm outfile }
 
+    subject { extended_csv.write! outfile }
+
     it "writes the file to the specified location" do
       expect(File.exists? outfile).to be_false
-      extended_csv.write! outfile
-      expect(File.exists? outfile).to be_true
+      subject
       expect(FileUtils.identical? infile, outfile).to be_true
     end
   end
