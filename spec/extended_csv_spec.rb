@@ -8,6 +8,10 @@ def another_sample_csv_filepath
   File.expand_path(File.join("..", "support", "another_sample.csv"), __FILE__)
 end
 
+def odd_number_of_records_csv_filepath
+  File.expand_path(File.join("..", "support", "odd_number_of_records.csv"), __FILE__)
+end
+
 describe ExtendedCSV do
   describe "#==" do
     let(:extended_csv)         { described_class.new }
@@ -118,24 +122,83 @@ describe ExtendedCSV do
     end
   end
 
-  describe "#split" do 
-    let(:extended_csv) { described_class.new sample_csv_filepath }
+  describe "#split" do
+    let(:number_of_splits) { 2 }
 
-    subject { extended_csv.split(2) }
+    context "with an even number of records (excluding header)" do
+      let(:extended_csv) { described_class.new sample_csv_filepath }
 
-    it "splits the file into an array that is made up of 2 ExtendedCSV objects" do
-      expect(extended_csv.content).to eq [["header_1", "header_2"],
-                                          ["row_1_column_1_entry", "row_1_column_2_entry"],
-                                          ["row_2_column_1_entry", "row_2_column_2_entry"]]
-      result = subject
-      expect(result.length == 2).to be_true
-      expect(result[0]).to be_an_instance_of described_class
-      expect(result[1]).to be_an_instance_of described_class
-      expect(result[0].content).to eq [["header_1", "header_2"],
-                                       ["row_1_column_1_entry", "row_1_column_2_entry"]]
-      expect(result[1].content).to eq [["header_1", "header_2"],
-                                       ["row_2_column_1_entry", "row_2_column_2_entry"]]
+      subject { extended_csv.split(number_of_splits) }
 
+      it "leaves the original instance unchanged" do
+        expect(extended_csv.content).to eq [["header_1", "header_2"],
+                                            ["row_1_column_1_entry", "row_1_column_2_entry"],
+                                            ["row_2_column_1_entry", "row_2_column_2_entry"]]
+
+        subject
+
+        expect(extended_csv.content).to eq [["header_1", "header_2"],
+                                            ["row_1_column_1_entry", "row_1_column_2_entry"],
+                                            ["row_2_column_1_entry", "row_2_column_2_entry"]]
+      end
+
+      it "returns the specified number of objects of the same type" do
+        result = subject
+
+        expect(result.length).to eq number_of_splits
+
+        expect(result[0]).to be_an_instance_of described_class
+        expect(result[1]).to be_an_instance_of described_class
+      end
+
+
+      it "splits the content amongst the parts evenly" do
+        result = subject
+
+        expect(result[0].content).to eq [["header_1", "header_2"],
+                                         ["row_1_column_1_entry", "row_1_column_2_entry"]]
+
+        expect(result[1].content).to eq [["header_1", "header_2"],
+                                         ["row_2_column_1_entry", "row_2_column_2_entry"]]
+      end
+    end
+
+    context "with an odd number of records (excluding header)" do
+      let(:extended_csv) { described_class.new odd_number_of_records_csv_filepath }
+
+      subject { extended_csv.split(number_of_splits) }
+
+      it "leaves the original instance unchanged" do
+        expect(extended_csv.content).to eq [["header_1", "header_2"],
+                                            ["odd_row_1_column_1_entry", "odd_row_1_column_2_entry"],
+                                            ["odd_row_2_column_1_entry", "odd_row_2_column_2_entry"],
+                                            ["odd_row_3_column_1_entry", "odd_row_3_column_2_entry"]]
+
+        subject
+
+        expect(extended_csv.content).to eq [["header_1", "header_2"],
+                                            ["odd_row_1_column_1_entry", "odd_row_1_column_2_entry"],
+                                            ["odd_row_2_column_1_entry", "odd_row_2_column_2_entry"],
+                                            ["odd_row_3_column_1_entry", "odd_row_3_column_2_entry"]]
+      end
+
+      it "returns the specified number of objects of the same type" do
+        result = subject
+        expect(result.length).to eq number_of_splits
+        expect(result[0]).to be_an_instance_of described_class
+        expect(result[1]).to be_an_instance_of described_class
+      end
+
+      it "splits the content amongst the parts approximately evenly" do
+        result = subject
+
+        expect(result[0].content).to eq [["header_1", "header_2"],
+                                         ["odd_row_1_column_1_entry", "odd_row_1_column_2_entry"]]
+
+        expect(result[1].content).to eq [["header_1", "header_2"],
+                                         ["odd_row_2_column_1_entry", "odd_row_2_column_2_entry"],
+                                         ["odd_row_3_column_1_entry", "odd_row_3_column_2_entry"]]
+      end
     end
   end
 end
