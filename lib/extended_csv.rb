@@ -1,4 +1,5 @@
 require 'csv'
+require 'extended_csv/version'
 
 class ExtendedCSV
   attr_reader :filepaths
@@ -13,6 +14,10 @@ class ExtendedCSV
 
   def + other_extended_csv
     self.class.new self.filepaths + other_extended_csv.filepaths
+  end
+
+  def == other_extended_csv
+    content == other_extended_csv.content
   end
 
   def content
@@ -31,23 +36,8 @@ class ExtendedCSV
     @content
   end
 
-  def == other_extended_csv
-    content == other_extended_csv.content
-  end
-
   def content_length
     content.length
-  end
-
-  def write! outfile = nil
-    outfile ||= default_outfile_name
-    CSV.open(outfile, "wb") do |csv|
-      content.each do |row|
-        csv << row
-      end
-    end
-
-    puts "wrote #{@filepaths.length} file#{'s' if @filepaths.length != 1} to #{outfile}"
   end
 
   def split split_count
@@ -64,6 +54,17 @@ class ExtendedCSV
     end
 
     splits
+  end
+
+  def write! outfile = nil
+    outfile ||= default_outfile_name
+    CSV.open(outfile, "wb") do |csv|
+      content.each do |row|
+        csv << row
+      end
+    end
+
+    puts "wrote #{@filepaths.length} file#{'s' if @filepaths.length != 1} to #{outfile}"
   end
 
 private

@@ -1,7 +1,7 @@
 # ExtendedCSV
 
 ```ruby
-require './models/extended_csv'
+require './lib/extended_csv'
 
 first  = ExtendedCSV.new 'first.csv'
 second = ExtendedCSV.new 'second.csv'
