@@ -14,9 +14,6 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
 
-  gem.add_runtime_dependency "activesupport", [">= 3.2.3"]
-
   gem.add_development_dependency "rake"
-  gem.add_development_dependency "cane"
   gem.add_development_dependency "rspec", [">= 2"]
 end
