@@ -3,8 +3,8 @@ require File.expand_path('../lib/extended_csv/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Jeff Iacono"]
   gem.email         = ["iacono@squarup.com"]
-  gem.summary       = "Extending the CSV module with some additional methods to allow for easier processing of larger CSV files"
-  gem.description   = "Extending the CSV module with some additional methods to allow for easier processing of larger CSV files"
+  gem.summary       = "A set of utils for working with multiple CSV files"
+  gem.description   = "A set of utils for working with multiple CSV files"
   gem.homepage      = ''
   gem.license       = 'MIT'
   gem.name          = 'extended_csv'
