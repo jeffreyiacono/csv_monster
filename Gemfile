@@ -4,5 +4,5 @@ group :test do
   gem 'rspec'
 end
 
-# Specify your gem's dependencies in extended_csv.gemspec
+# Specify your gem's dependencies in csv_monster.gemspec
 gemspec

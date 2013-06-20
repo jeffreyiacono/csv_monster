@@ -1,7 +1,7 @@
 require 'csv'
-require 'extended_csv/version'
+require 'csv_monster/version'
 
-class ExtendedCSV
+class CSVMonster
   attr_reader :filepaths
 
   def initialize filepaths = nil
@@ -12,12 +12,12 @@ class ExtendedCSV
     @filepaths = [*filepaths]
   end
 
-  def + other_extended_csv
-    self.class.new self.filepaths + other_extended_csv.filepaths
+  def + other_csv_monster
+    self.class.new self.filepaths + other_csv_monster.filepaths
   end
 
-  def == other_extended_csv
-    content == other_extended_csv.content
+  def == other_csv_monster
+    content == other_csv_monster.content
   end
 
   def content

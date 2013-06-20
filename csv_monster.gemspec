@@ -1,4 +1,4 @@
-require File.expand_path('../lib/extended_csv/version', __FILE__)
+require File.expand_path('../lib/csv_monster/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Jeff Iacono"]
@@ -7,9 +7,9 @@ Gem::Specification.new do |gem|
   gem.description   = "A set of utils for working with multiple CSV files"
   gem.homepage      = ''
   gem.license       = 'MIT'
-  gem.name          = 'extended_csv'
+  gem.name          = 'csv_monster'
   gem.date          = '2013-06-19'
-  gem.version       = ExtendedCSV::VERSION
+  gem.version       = CSVMonster::VERSION
   gem.require_paths = ["lib"]
   gem.files         = `git ls-files`.split($\)
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
