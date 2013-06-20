@@ -1,12 +1,12 @@
-# ExtendedCSV
+# CSVMonster
 
 ```ruby
-require './lib/extended_csv'
+require './lib/csv_monster'
 
-first  = ExtendedCSV.new 'first.csv'
-second = ExtendedCSV.new 'second.csv'
-parts  = ExtendedCSV.new ['first.csv', 'second.csv']
-whole  = ExtendedCSV.new 'first_and_second_already_combined.csv'
+first  = CSVMonster.new 'first.csv'
+second = CSVMonster.new 'second.csv'
+parts  = CSVMonster.new ['first.csv', 'second.csv']
+whole  = CSVMonster.new 'first_and_second_already_combined.csv'
 
 # using the + operator
 puts (whole == (first + second)) ? "matchy!" : "no matchy!"

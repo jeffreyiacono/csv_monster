@@ -1,3 +1,3 @@
-class ExtendedCSV
+class CSVMonster
   VERSION = "0.0.1"
 end
