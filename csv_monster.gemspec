@@ -1,10 +1,10 @@
 require File.expand_path('../lib/csv_monster/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Jeff Iacono"]
-  gem.email         = ["iacono@squarup.com"]
-  gem.summary       = "A set of utils for working with multiple CSV files"
-  gem.description   = "A set of utils for working with multiple CSV files"
+  gem.authors       = ["Jeff Iacono", "Joe Prang"]
+  gem.email         = ["jeff.iacono@gmail.com", "joseph.prang@gmail.com"]
+  gem.summary       = "A monster of a CSV util"
+  gem.description   = "A set of utils for working with CSV files"
   gem.homepage      = ''
   gem.license       = 'MIT'
   gem.name          = 'csv_monster'
