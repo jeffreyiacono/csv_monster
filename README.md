@@ -14,5 +14,5 @@ puts (whole == (first + second)) ? "matchy!" : "no matchy!"
 # using the initializer
 puts "whole contains #{whole.content_length} records"
 puts "parts contain #{parts.content_length} records"
-puts (whole == parts) ? "matchy!" : "no matchy!"
+puts whole == parts ? "matchy!" : "no matchy!"
 ```
