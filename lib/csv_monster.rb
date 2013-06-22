@@ -64,7 +64,7 @@ class CSVMonster
       end
     end
 
-    puts "wrote #{@filepaths.length} file#{'s' if @filepaths.length != 1} to #{outfile}"
+    puts "wrote #{content.length} rows to #{outfile}"
   end
 
 private
