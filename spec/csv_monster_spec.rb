@@ -159,14 +159,18 @@ describe CSVMonster do
         expect(csv_monster.content).to eq [["header_1", "header_2"],
                                             ["odd_row_1_column_1_entry", "odd_row_1_column_2_entry"],
                                             ["odd_row_2_column_1_entry", "odd_row_2_column_2_entry"],
-                                            ["odd_row_3_column_1_entry", "odd_row_3_column_2_entry"]]
+                                            ["odd_row_3_column_1_entry", "odd_row_3_column_2_entry"],
+                                            ["odd_row_4_column_1_entry", "odd_row_4_column_2_entry"],
+                                            ["odd_row_5_column_1_entry", "odd_row_5_column_2_entry"]]
 
         subject
 
         expect(csv_monster.content).to eq [["header_1", "header_2"],
-                                            ["odd_row_1_column_1_entry", "odd_row_1_column_2_entry"],
-                                            ["odd_row_2_column_1_entry", "odd_row_2_column_2_entry"],
-                                            ["odd_row_3_column_1_entry", "odd_row_3_column_2_entry"]]
+                                           ["odd_row_1_column_1_entry", "odd_row_1_column_2_entry"],
+                                           ["odd_row_2_column_1_entry", "odd_row_2_column_2_entry"],
+                                           ["odd_row_3_column_1_entry", "odd_row_3_column_2_entry"],
+                                           ["odd_row_4_column_1_entry", "odd_row_4_column_2_entry"],
+                                           ["odd_row_5_column_1_entry", "odd_row_5_column_2_entry"]]
       end
 
       it "returns the specified number of objects of the same type" do
@@ -180,11 +184,13 @@ describe CSVMonster do
         result = subject
 
         expect(result[0].content).to eq [["header_1", "header_2"],
-                                         ["odd_row_1_column_1_entry", "odd_row_1_column_2_entry"]]
+                                         ["odd_row_1_column_1_entry", "odd_row_1_column_2_entry"],
+                                         ["odd_row_2_column_1_entry", "odd_row_2_column_2_entry"]]
 
         expect(result[1].content).to eq [["header_1", "header_2"],
-                                         ["odd_row_2_column_1_entry", "odd_row_2_column_2_entry"],
-                                         ["odd_row_3_column_1_entry", "odd_row_3_column_2_entry"]]
+                                         ["odd_row_3_column_1_entry", "odd_row_3_column_2_entry"],
+                                         ["odd_row_4_column_1_entry", "odd_row_4_column_2_entry"],
+                                         ["odd_row_5_column_1_entry", "odd_row_5_column_2_entry"]]
       end
     end
   end

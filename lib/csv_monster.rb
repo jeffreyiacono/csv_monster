@@ -45,7 +45,7 @@ class CSVMonster
     splits = []
 
     tail.each_with_index do |row, i|
-      if (i % tail.length / split_count).zero? && split_count > splits.length
+      if (i % (tail.length / split_count)).zero? && split_count > splits.length
         splits << self.class.new
         splits.last.content << header
       end
