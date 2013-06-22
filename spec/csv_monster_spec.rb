@@ -196,8 +196,8 @@ describe CSVMonster do
   end
 
   describe "#write!" do
-    let(:infile)       { sample_csv_filepath }
-    let(:outfile)      { File.expand_path(File.join("..", "support", "test", "write_sample.csv"), __FILE__) }
+    let(:infile)      { sample_csv_filepath }
+    let(:outfile)     { File.expand_path(File.join("..", "support", "test", "write_sample.csv"), __FILE__) }
     let(:csv_monster) { described_class.new infile }
 
     before  { safely_rm outfile }
