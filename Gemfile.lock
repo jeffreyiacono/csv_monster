@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    extended_csv (0.0.1)
+    csv_monster (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -21,6 +21,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  extended_csv!
+  csv_monster!
   rake
   rspec
