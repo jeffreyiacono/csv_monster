@@ -64,7 +64,7 @@ class CSVMonster
       end
     end
 
-    puts "wrote #{content.length} rows to #{outfile}"
+    outfile
   end
 
 private
