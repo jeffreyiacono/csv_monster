@@ -41,11 +41,12 @@ class CSVMonster
   end
 
   def split split_count
-    header, *tail = self.content
+    header, *entries = self.content
     splits = []
 
-    tail.each_with_index do |row, i|
-      if (i % (tail.length / split_count)).zero? && split_count > splits.length
+    entries.each_with_index do |row, i|
+      if (i % (entries.length / split_count)).zero? &&
+            split_count > splits.length
         splits << self.class.new
         splits.last.content << header
       end
@@ -64,7 +65,7 @@ class CSVMonster
       end
     end
 
-    puts "wrote #{content.length} rows to #{outfile}"
+    outfile
   end
 
 private

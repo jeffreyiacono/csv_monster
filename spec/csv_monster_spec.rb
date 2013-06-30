@@ -205,6 +205,10 @@ describe CSVMonster do
 
     subject { csv_monster.write! outfile }
 
+    it "returns the file path it wrote to" do
+      expect(subject).to eq outfile
+    end
+
     it "writes the file to the specified location" do
       expect(File.exists? outfile).to be_false
       subject
