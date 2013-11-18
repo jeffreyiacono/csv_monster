@@ -4,19 +4,19 @@ require 'csv_monster/version'
 class CSVMonster
   attr_reader :filepaths
 
-  def initialize filepaths = nil
+  def initialize(filepaths = nil)
     self.filepaths = filepaths
   end
 
-  def filepaths= filepaths
+  def filepaths=(filepaths)
     @filepaths = [*filepaths]
   end
 
-  def + other_csv_monster
+  def +(other_csv_monster)
     self.class.new self.filepaths + other_csv_monster.filepaths
   end
 
-  def == other_csv_monster
+  def ==(other_csv_monster)
     content == other_csv_monster.content
   end
 
@@ -59,7 +59,7 @@ class CSVMonster
 
   alias_method :'/', :split
 
-  def write! outfile = nil
+  def write!(outfile = nil)
     outfile ||= default_outfile_name
     CSV.open(outfile, "wb") do |csv|
       content.each do |row|
