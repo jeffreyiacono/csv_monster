@@ -139,6 +139,64 @@ describe CSVMonster do
     end
   end
 
+  describe "#/" do
+    let(:number_of_splits) { 2 }
+
+    context "with an even number of records (excluding header)" do
+      let(:csv_monster) { described_class.new(sample_csv_filepath) }
+
+      subject { csv_monster / number_of_splits }
+
+      it "leaves the original instance unchanged" do
+        expect(csv_monster.content).to eq(
+          [
+            ["header_1", "header_2"],
+            ["row_1_column_1_entry", "row_1_column_2_entry"],
+            ["row_2_column_1_entry", "row_2_column_2_entry"]
+          ]
+        )
+
+        subject
+
+        expect(csv_monster.content).to eq(
+          [
+            ["header_1", "header_2"],
+            ["row_1_column_1_entry", "row_1_column_2_entry"],
+            ["row_2_column_1_entry", "row_2_column_2_entry"]
+          ]
+        )
+      end
+
+      it "returns the specified number of objects of the same type" do
+        result = subject
+
+        expect(result.length).to eq(number_of_splits)
+
+        expect(result[0]).to be_an_instance_of(described_class)
+        expect(result[1]).to be_an_instance_of(described_class)
+      end
+
+
+      it "splits the content amongst the parts evenly" do
+        result = subject
+
+        expect(result[0].content).to eq(
+          [
+            ["header_1", "header_2"],
+            ["row_1_column_1_entry", "row_1_column_2_entry"]
+          ]
+        )
+
+        expect(result[1].content).to eq(
+          [
+            ["header_1", "header_2"],
+            ["row_2_column_1_entry", "row_2_column_2_entry"]
+          ]
+        )
+      end
+    end
+  end
+
   describe "#split" do
     let(:number_of_splits) { 2 }
 

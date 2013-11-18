@@ -40,7 +40,7 @@ class CSVMonster
     content.length
   end
 
-  def split split_count
+  def split(split_count)
     header, *entries = self.content
     splits = []
 
@@ -56,6 +56,8 @@ class CSVMonster
 
     splits
   end
+
+  alias_method :'/', :split
 
   def write! outfile = nil
     outfile ||= default_outfile_name
