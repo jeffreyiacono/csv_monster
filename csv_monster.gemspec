@@ -14,6 +14,6 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
 
-  gem.add_development_dependency "rake"
+  gem.add_development_dependency "rake", ">= 12.3.3"
   gem.add_development_dependency "rspec", [">= 2"]
 end
